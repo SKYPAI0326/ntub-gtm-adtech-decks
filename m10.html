@@ -566,6 +566,37 @@
     50%, 80% { transform: rotate(-90deg) }
   }
 
+  /* ============ Desktop overflow tightening · 2026-05-10 ============
+     桌機 1920×1080 下，多 rowline / 多 stat-card / 長 callout 容易撐破 100vh。
+     這區段只在 ≥901px 生效，覆蓋預設 padding 與字級，整體把垂直空間收緊。
+     行動版（≤900px）保留原本字級不動。
+  ================================================================ */
+  @media (min-width: 901px) {
+    .rowline { padding: 1.2vh 0 }
+    .rowline .k { font-size: 1.4vw }
+    .rowline .v { font-size: max(12px, .98vw); line-height: 1.45 }
+    .rowline .m { font-size: max(10px, .72vw) }
+    .callout { padding: 1.6vh 1.8vw; font-size: max(13px, 1vw); line-height: 1.45 }
+    .callout .callout-src, .callout .cite { margin-top: .6vh }
+    .stat-card { padding-top: 1vh }
+    .stat-card .stat-note { font-size: max(12px, .92vw); line-height: 1.38; margin-top: .3vh }
+    /* 5-step pipeline 卡片更緊：page 9 / page 14 */
+    [data-animate="pipeline"] .frame > div[style*="display:grid"] > div[data-anim="step"] {
+      padding: 1.2vh 2vw !important;
+    }
+    [data-animate="pipeline"] .frame > div[style*="display:grid"] > div[data-anim="step"] .h-md {
+      font-size: 1.5vw !important;
+    }
+    [data-animate="pipeline"] .frame > div[style*="display:grid"] > div[data-anim="step"] > div > div:last-child {
+      font-size: max(12px, .92vw) !important;
+      line-height: 1.4;
+    }
+    /* hero 頁 grid gap 收一點 */
+    .slide.hero .frame[style*="align-content:center"] { gap: 3vh !important }
+    /* kicker 收 margin */
+    .kicker { margin-bottom: 1.8vh }
+  }
+
 </style>
 </head>
 <body>
@@ -597,16 +628,10 @@
       把 GA4 / GTM / Meta / Google / LINE / TikTok / Consent 全部<em>組裝起來</em>，跑完訪談 → 規劃 → 佈建 → 驗證 → 交付，產出一份能對客戶簽字的成品。
     </p>
     <div class="meta-row" data-anim>
-      <span>Module 10 · Final / 10</span><span>·</span><span>資料來源整合 · 五頁模板 · 期末客戶案</span><span>·</span><span>2026 秋</span>
+      <span>Module 10 · Final / 10</span><span>·</span><span>3 小時授課 · 3 單元</span><span>·</span><span>2026 秋</span>
     </div>
-    <div class="meta-row" style="margin-top:1.6vh;opacity:.78" data-anim>
-      <span>Duration · 3 小時授課 · 3 單元 · Module 10（最終）/ 10</span>
-    </div>
-    <div class="meta-row" style="margin-top:1.6vh;opacity:.74" data-anim>
-      <span>Contact</span><span>·</span><span><a href="mailto:sky8697@gmail.com" style="color:inherit;text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:2px">sky8697@gmail.com</a></span>
-    </div>
-    <div class="meta-row" style="margin-top:1.6vh;opacity:.74" data-anim>
-      <span>Lecturer</span><span>·</span><span>弄一下工作室 × 台北商業大學</span>
+    <div class="meta-row" style="margin-top:1.2vh;opacity:.74" data-anim>
+      <span>Lecturer · 弄一下工作室 × 台北商業大學</span><span>·</span><span><a href="mailto:sky8697@gmail.com" style="color:inherit;text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:2px">sky8697@gmail.com</a></span>
     </div>
   </div>
   <div class="foot">
@@ -932,51 +957,51 @@
     <div class="kicker" data-anim>Executive Summary · 8 Scorecard 清單</div>
     <h2 class="h-xl" data-anim>總覽頁 8 個 Scorecard · <em>一頁回答現在好不好</em></h2>
 
-    <div class="grid-4" style="margin-top:5vh; gap:2vh 2vw">
-      <div class="stat-card" data-anim style="padding:2vh 2vw">
-        <div class="stat-label">本期營收</div>
-        <div class="stat-nb" style="font-size:3vw">Revenue<span class="stat-unit" style="font-size:.9vw">+ 環比</span></div>
-        <div class="stat-note" style="font-size:.85vw">最大字、最上方、永遠在</div>
+    <div style="margin-top:3.5vh; display:grid; grid-template-columns:repeat(4,1fr); gap:1.4vh 1.6vw">
+      <div class="stat-card" data-anim style="padding:1vh 1.2vw">
+        <div class="stat-label" style="font-size:.7vw">本期營收</div>
+        <div class="stat-nb" style="font-size:2.2vw">Revenue<span class="stat-unit" style="font-size:.78vw">+ 環比</span></div>
+        <div class="stat-note" style="font-size:.78vw; line-height:1.35; margin-top:.3vh">最大字、最上方、永遠在</div>
       </div>
-      <div class="stat-card" data-anim style="padding:2vh 2vw">
-        <div class="stat-label">MER</div>
-        <div class="stat-nb" style="font-size:3vw">Blended<span class="stat-unit" style="font-size:.9vw">ROAS</span></div>
-        <div class="stat-note" style="font-size:.85vw">含 organic 的整體效率</div>
+      <div class="stat-card" data-anim style="padding:1vh 1.2vw">
+        <div class="stat-label" style="font-size:.7vw">MER</div>
+        <div class="stat-nb" style="font-size:2.2vw">Blended<span class="stat-unit" style="font-size:.78vw">ROAS</span></div>
+        <div class="stat-note" style="font-size:.78vw; line-height:1.35; margin-top:.3vh">含 organic 的整體效率</div>
       </div>
-      <div class="stat-card" data-anim style="padding:2vh 2vw">
-        <div class="stat-label">CPA</div>
-        <div class="stat-nb" style="font-size:3vw">Acquisition<span class="stat-unit" style="font-size:.9vw">cost</span></div>
-        <div class="stat-note" style="font-size:.85vw">每獲客成本，看走向</div>
+      <div class="stat-card" data-anim style="padding:1vh 1.2vw">
+        <div class="stat-label" style="font-size:.7vw">CPA</div>
+        <div class="stat-nb" style="font-size:2.2vw">Acquisition<span class="stat-unit" style="font-size:.78vw">cost</span></div>
+        <div class="stat-note" style="font-size:.78vw; line-height:1.35; margin-top:.3vh">每獲客成本，看走向</div>
       </div>
-      <div class="stat-card" data-anim style="padding:2vh 2vw">
-        <div class="stat-label">新客數</div>
-        <div class="stat-nb" style="font-size:3vw">New<span class="stat-unit" style="font-size:.9vw">users</span></div>
-        <div class="stat-note" style="font-size:.85vw">成長盤的核心</div>
+      <div class="stat-card" data-anim style="padding:1vh 1.2vw">
+        <div class="stat-label" style="font-size:.7vw">新客數</div>
+        <div class="stat-nb" style="font-size:2.2vw">New<span class="stat-unit" style="font-size:.78vw">users</span></div>
+        <div class="stat-note" style="font-size:.78vw; line-height:1.35; margin-top:.3vh">成長盤的核心</div>
       </div>
-      <div class="stat-card" data-anim style="padding:2vh 2vw">
-        <div class="stat-label">AOV</div>
-        <div class="stat-nb" style="font-size:3vw">客單<span class="stat-unit" style="font-size:.9vw">價</span></div>
-        <div class="stat-note" style="font-size:.85vw">提案會用</div>
+      <div class="stat-card" data-anim style="padding:1vh 1.2vw">
+        <div class="stat-label" style="font-size:.7vw">AOV</div>
+        <div class="stat-nb" style="font-size:2.2vw">客單<span class="stat-unit" style="font-size:.78vw">價</span></div>
+        <div class="stat-note" style="font-size:.78vw; line-height:1.35; margin-top:.3vh">提案會用</div>
       </div>
-      <div class="stat-card" data-anim style="padding:2vh 2vw">
-        <div class="stat-label">ROAS</div>
-        <div class="stat-nb" style="font-size:3vw">Paid<span class="stat-unit" style="font-size:.9vw">only</span></div>
-        <div class="stat-note" style="font-size:.85vw">廣告效率單看</div>
+      <div class="stat-card" data-anim style="padding:1vh 1.2vw">
+        <div class="stat-label" style="font-size:.7vw">ROAS</div>
+        <div class="stat-nb" style="font-size:2.2vw">Paid<span class="stat-unit" style="font-size:.78vw">only</span></div>
+        <div class="stat-note" style="font-size:.78vw; line-height:1.35; margin-top:.3vh">廣告效率單看</div>
       </div>
-      <div class="stat-card" data-anim style="padding:2vh 2vw">
-        <div class="stat-label">流量</div>
-        <div class="stat-nb" style="font-size:3vw">Sessions<span class="stat-unit" style="font-size:.9vw">+ 來源</span></div>
-        <div class="stat-note" style="font-size:.85vw">看趨勢，不看絕對值</div>
+      <div class="stat-card" data-anim style="padding:1vh 1.2vw">
+        <div class="stat-label" style="font-size:.7vw">流量</div>
+        <div class="stat-nb" style="font-size:2.2vw">Sessions<span class="stat-unit" style="font-size:.78vw">+ 來源</span></div>
+        <div class="stat-note" style="font-size:.78vw; line-height:1.35; margin-top:.3vh">看趨勢，不看絕對值</div>
       </div>
-      <div class="stat-card" data-anim style="padding:2vh 2vw; border-color:rgba(127,127,127,.6)">
-        <div class="stat-label">轉換率</div>
-        <div class="stat-nb" style="font-size:3vw">CVR<span class="stat-unit" style="font-size:.9vw">%</span></div>
-        <div class="stat-note" style="font-size:.85vw">健檢用，<em>低於警戒線標紅</em></div>
+      <div class="stat-card" data-anim style="padding:1vh 1.2vw; border-color:rgba(127,127,127,.6)">
+        <div class="stat-label" style="font-size:.7vw">轉換率</div>
+        <div class="stat-nb" style="font-size:2.2vw">CVR<span class="stat-unit" style="font-size:.78vw">%</span></div>
+        <div class="stat-note" style="font-size:.78vw; line-height:1.35; margin-top:.3vh">健檢用，<em>低於警戒線標紅</em></div>
       </div>
     </div>
-    <div class="callout" style="margin-top:3vh" data-anim>
-      <strong>規則：</strong>Scorecard 上方 / 時序圖中段 / 異常事件 red flag 下方。<em>滑動範圍小、一頁裝完</em>。這頁失手，其他四頁再細緻都沒用——老闆只看這頁。
-      <div class="callout-src">10-2 · 總覽頁</div>
+    <div class="callout" style="margin-top:2vh; padding:1.4vh 1.8vw; font-size:max(13px,.95vw); line-height:1.45" data-anim>
+      <strong>規則：</strong>Scorecard 上方 / 時序圖中段 / 異常事件 red flag 下方。<em>一頁裝完</em>。這頁失手，其他四頁再細緻都沒用。
+      <div class="callout-src" style="margin-top:.6vh">10-2 · 總覽頁</div>
     </div>
   </div>
   <div class="foot">
