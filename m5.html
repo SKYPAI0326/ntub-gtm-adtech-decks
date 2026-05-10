@@ -567,8 +567,8 @@
   }
 
 
-/* landscape-mobile-fix v3 */
-@media (max-height:700px) and (orientation:landscape) {
+/* landscape-mobile-fix v4 */
+@media (max-height:900px) and (orientation:landscape) {
   .slide { padding: 1vh 3.5vw 1.4vh 3.5vw !important }
   .frame { gap: .5vh !important }
   .chrome, .foot { font-size: max(8px, 1.4vh) !important; letter-spacing: .12em }
@@ -623,6 +623,10 @@
   .checklist-rows.checklist-8 .row-desc { font-size: max(8px, 1.25vh) !important; line-height: 1.22 !important }
   /* portrait overlay 在 landscape 不顯示 */
   #portrait-hint { display: none !important }
+
+  /* 內容若仍超出，允許在 frame 內向下捲動（橫向滑頁不受影響） */
+  .slide { overflow-y: auto !important; -webkit-overflow-scrolling: touch }
+  .frame { overflow: visible !important; min-height: auto !important }
 }
 
 </style>
