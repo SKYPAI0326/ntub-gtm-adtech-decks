@@ -1228,16 +1228,20 @@ dataLayer.push({
 </section>
 
 <!-- ============ 18. 上線前 8 項 QA Checklist (light, starred) ============ -->
-<section class="slide light">
+<section class="slide light tight-p18">
+  <style>
+    .tight-p18 .rowline.checklist-rows{padding:0;display:flex;flex-direction:column;gap:.2vh}
+    .tight-p18 .row{padding:.15vh 0;gap:1.4vw;line-height:1.35}
+  </style>
   <header class="chrome">
     <div>5-3 · Go-Live Checklist</div>
     <div>18 / 20 <a class="chrome-link starred" href="https://skypai0326.github.io/courses/courses/ntub-gtm-adtech/m5-3-dedup.html" target="_blank" rel="noopener" title="開啟詳細講義（新分頁，含完整 checklist 表）">講義 · M5-3</a></div>
   </header>
-  <div class="frame" style="gap:3vh">
-    <div class="kicker" data-anim>Step 12 · 每個新站上線都要跑一次</div>
-    <h2 class="h-xl" data-anim>上線前 <em>8 項 QA Checklist</em></h2>
-    <p class="lead" style="max-width:46em" data-anim>八項都打勾——<em>你的電商追蹤穩了</em>。少一項就回頭補。</p>
-    <div class="rowline checklist-rows checklist-8" style="margin-top:1.6vh">
+  <div class="frame" style="gap:1vh;padding-top:0">
+    <div class="kicker" data-anim style="margin-bottom:1vh">Step 12 · 每個新站上線都要跑一次</div>
+    <h2 class="h-xl" data-anim style="font-size:3.6vw">上線前 <em>8 項 QA Checklist</em></h2>
+    <p class="lead" style="max-width:46em;margin-top:.2vh;font-size:1.4vw" data-anim>八項都打勾——<em>你的電商追蹤穩了</em>。少一項就回頭補。</p>
+    <div class="rowline checklist-rows checklist-8" style="margin-top:.4vh">
       <div class="row" data-anim>
         <div class="row-nb">01</div>
         <div class="row-title">transaction_id 唯一</div>
